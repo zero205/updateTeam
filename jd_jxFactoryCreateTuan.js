@@ -241,6 +241,7 @@ function CreateTuan() {
               $.tuanIds.push(data.data['tuanId']);
             } else {
               console.log(`开团异常：${JSON.stringify(data)}`);
+              $.msg('【提示】开团异常，请重新获取开团ID');
             }
           }
         }
