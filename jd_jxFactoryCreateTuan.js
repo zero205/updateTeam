@@ -241,8 +241,11 @@ function CreateTuan() {
               $.tuanIds.push(data.data['tuanId']);
             } else {
               console.log(`开团异常：${JSON.stringify(data)}`);
-              $.msg('【提示】开团异常，请重新获取开团ID');
             }
+            $.msg('【提示】开团异常，请重新获取开团ID');
+            if ($.isNode()) {
+            await notify.sendNotify(`开团ID已过期，请重新获取 ‼️‼️`);
+          }
           }
         }
       } catch (e) {
