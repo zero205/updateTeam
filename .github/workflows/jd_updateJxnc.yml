@@ -33,7 +33,7 @@ jobs:
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_PLUS_TOKEN	: ${{ secrets.PUSH_PLUS_TOKEN }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
       - name: commit
         run: |
           git config --global user.email ${{ secrets.EMAIL }}
