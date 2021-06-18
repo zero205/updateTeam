@@ -240,7 +240,9 @@ function CreateTuan() {
               console.log(`开团成功tuanId为\n${data.data['tuanId']}`);
               $.tuanIds.push(data.data['tuanId']);
             } else {
-              $.msg('【提示】开团异常，请重新获取开团ID');
+              if ($.isNode()) {
+            await notify.sendNotify(`开团ID已过期，请重新获取 ‼️‼️`);
+          }
               process.exit(0)
             }
           }
