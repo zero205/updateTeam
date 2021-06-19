@@ -22,7 +22,7 @@ if ($.isNode()) {
   }
   $.CryptoJS = $.isNode() ? require('crypto-js') : CryptoJS;
   await requestAlgo();
-  for (let i = 0; i < 25; i++) {
+  for (let i = 0; i < 10; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1])
@@ -41,9 +41,9 @@ if ($.isNode()) {
         continue
       }
       await getUserInfo();
-      await $.wait(5000)
+      await $.wait(15000)
       await submitGroupId()
-      await $.wait(10000)
+      await $.wait(5000)
     }
   }
   await writeFile();
