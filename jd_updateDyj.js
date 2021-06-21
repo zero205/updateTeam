@@ -52,8 +52,9 @@ $.markedPin = [];
 
 async function writeFile() {
   const shareCodeList = {
-    redEnvelopeId: $.redEnvelopeId,
-    inviter: $.markedPin
+    redEnvelopeId: data.data.redEnvelopeId,
+    inviter: data.data.markedPin,
+    userName: ""
   }
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
   await fs.writeFileSync(`./shareCodes/dyj.json`, JSON.stringify(shareCodeList));
