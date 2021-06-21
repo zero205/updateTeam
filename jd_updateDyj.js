@@ -52,12 +52,10 @@ $.markedPin = [];
 
 async function writeFile() {
   const shareCodeList = {
-    redEnvelopeId: data.data.redEnvelopeId,
-    inviter: data.data.markedPin,
-    userName: ""
+    redEnvelopeId: $.redEnvelopeId
   }
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/dyj.json`, JSON.stringify(shareCodeList));
+  await fs.writeFileSync(`./shareCodes/redEnvelopeId.json`, JSON.stringify(shareCodeList));
   console.log(`\n${JSON.stringify(shareCodeList)}\n`)
   console.log(`文件写入成功`);
 }
@@ -80,7 +78,6 @@ function info() {
         if (data.code == 0) {
           console.log('你的活动ID：' + data.data.redEnvelopeId + '\n你的邀请码:' + data.data.markedPin)
           $.redEnvelopeId.push(data.data.redEnvelopeId)
-          $.markedPin.push(data.data.markedPin)
         }
       } catch (e) {
         $.logErr(e, resp);
