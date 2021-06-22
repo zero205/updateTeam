@@ -85,7 +85,7 @@ headers: {
                     if(data.code == 0){
                       //console.log(`{"ningmengsq": {"redEnvelopeId":"${data.data.redEnvelopeId}","inviter":"${data.data.markedPin}"}}`)
                        console.log(`export redEnvelopeId="${data.data.redEnvelopeId}"\nexport inviter="${data.data.markedPin}"`)
-                       $.redEnvelopeId.push(${data.data.redEnvelopeId})
+                       $.redEnvelopeId.push(data.data.redEnvelopeId)
                 }
             } catch (e) {
                 $.logErr(e, resp);
