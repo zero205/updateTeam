@@ -6,7 +6,7 @@ name: jd_updateDyj
 on:
   workflow_dispatch:
   schedule:
-    - cron: '51 15,23 * * *'
+    - cron: '56 15,23 * * *'
   watch:
     types: started
   repository_dispatch:
