@@ -40,10 +40,10 @@ if ($.isNode()) {
         }
         continue
       }
-      await getUserInfo();
-      await $.wait(15000)
+      // await getUserInfo();
+      // await $.wait(10000)
       await submitGroupId()
-      await $.wait(5000)
+      await $.wait(10000)
     }
   }
   await writeFile();
@@ -53,7 +53,7 @@ if ($.isNode()) {
 
 async function writeFile() {
   const info = {
-    shareId : $.strMyShareIds,
+    // shareId : $.strMyShareIds,
     strGroupIds : $.strGroupIds
   }
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
