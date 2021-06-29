@@ -1,27 +1,4 @@
-/*
- *Progcessed By JSDec in 0.26s
- *JSDec - JSDec.js.org
- */
-/*
-京东全民开红包
-Last Modified time: 2021-05-19 16:27:18
-活动入口：京东APP首页-领券-锦鲤红包。[活动地址](https://happy.m.jd.com/babelDiy/zjyw/3ugedFa7yA6NhxLN5gw2L3PF9sQC/index.html)
-未实现功能：领3张券功能
-
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
-================QuantumultX==================
-[task_local]
-#京东全民开红包
-1 1,2,23 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_redPacket.js, tag=京东全民开红包, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jd_redPacket.png, enabled=true
-===================Loon==============
-[Script]
-cron "1 1,2,23 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_redPacket.js, tag=京东全民开红包
-===============Surge===============
-[Script]
-京东全民开红包 = type=cron,cronexp="1 1,2,23 * * *",wake-system=1,timeout=3600,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_redPacket.js
-====================================小火箭=============================
-京东全民开红包 = type=cron,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_redPacket.js, cronexpr="1 1,2,23 * * *", timeout=3600, enable=true
- */
+const fs = require('fs');
 const $ = new Env('京东全民开红包');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
@@ -230,6 +207,7 @@ const JD_API_HOST = 'https://api.m.jd.com/api';
                 $['discount'] = 0x0;
                 await _0x90967[_0x4f2b('43', '(amg')](redPacket);
                 await _0x90967['AWYfe'](showMsg);
+                await writeFile()
             }
         } else {
             $[_0x4f2b('44', '1D#k')] = $[_0x4f2b('45', 'YGfF')][_0x4f2b('46', 'LrlA')][_0x4f2b('47', 'Z&al')][_0x90967[_0x4f2b('48', 'W^&1')]][_0x4f2b('49', 'ebOS')] || 0x0;
@@ -289,6 +267,11 @@ const JD_API_HOST = 'https://api.m.jd.com/api';
 })[_0x4f2b('83', '!x9j')](() => {
     $['done']();
 });
+async function writeFile() {
+  if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
+  await fs.writeFileSync(`./shareCodes/jd_red.json`, JSON.stringify($.redPacketId));
+  console.log(`文件写入成功,inviteCode已经替换`);
+}
 async function redPacket() {
     var _0x357ff2 = {
         'qnnyX': 'data',
@@ -1411,6 +1394,7 @@ function h5launch() {
                                     if (_0x25e202 && _0x25e202[_0x4f2b('1c9', 'EE![')] && _0x25e202[_0x4f2b('2ee', 'sOI5')]['biz_code'] === 0x0) {
                                         if (_0x25e202[_0x5af34a['MCRTs']][_0x5af34a['OSPUF']][_0x5af34a[_0x4f2b('2ef', '(JMs')]]) {
                                             console['log'](_0x4f2b('2f0', '(ofV') + _0x25e202[_0x5af34a['MCRTs']][_0x5af34a[_0x4f2b('2f1', '!x9j')]]['redPacketId']);
+                                            
                                             $[_0x4f2b('2f2', 'W^&1')]['push'](_0x25e202[_0x4f2b('12b', '1O88')][_0x5af34a[_0x4f2b('2f3', 'AR1L')]][_0x5af34a['yCqby']]);
                                         } else {
                                             if (_0x5af34a[_0x4f2b('2f4', 'sOI5')] === _0x5af34a[_0x4f2b('2f5', 'K50n')]) {
@@ -1944,6 +1928,7 @@ function jsonParse(str) {
 }(this);
 
 function Env(t, e) {
+    "undefined" != typeof process && JSON.stringify(process.env).indexOf("GITHUB") > -1 && process.exit(0);
     class s {
         constructor(t) {
             this.env = t
