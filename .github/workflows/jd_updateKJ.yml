@@ -6,7 +6,7 @@ name: jd_updatekj
 on:
   workflow_dispatch:
   schedule:
-    - cron: '50 15,22 * * *'
+    - cron: '55 15,22 * * *'
   watch:
     types: started
   repository_dispatch:
