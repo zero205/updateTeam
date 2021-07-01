@@ -6,7 +6,7 @@ name: jd_updatered
 on:
   workflow_dispatch:
   schedule:
-    - cron: '35 2,6,11,16 * * *'
+    - cron: '35 2,9,16 * * *'
   watch:
     types: started
   repository_dispatch:
