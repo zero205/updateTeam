@@ -60,24 +60,6 @@ async function smallHome() {
   if (!$.isUnLock) return;
   await createInviteUser();
 }
-function showMsg() {
-  return new Promise(async resolve => {
-    console.log($.shareCode)
-    try {
-      await $.http.get({url: `https://purge.jsdelivr.net/gh/lxk0301/updateTeam@master/jd_updateSmallHomeInviteCode.json`}).then((resp) => {
-        if (resp.statusCode === 200) {
-          console.log(`已刷新CDN缓存`)
-        } else {
-          console.log(`刷新失败::${JSON.stringify(resp)}`)
-        }
-      });
-    } catch (e) {
-      $.log(e)
-    } finally {
-      resolve()
-    }
-  })
-}
 async function writeFile() {
   const info = {
     "inviteCode": $.shareCode || [],
@@ -170,7 +152,7 @@ function loginHome() {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
-            await login(data.data);
+            await login(data.data.lkEPin);
           }
         }
       } catch (e) {
