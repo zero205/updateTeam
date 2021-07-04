@@ -6,7 +6,7 @@ name: jd_update_small_home
 on:
   workflow_dispatch:
   schedule:
-    - cron: '15,50 16 * * *'
+    - cron: '10 16 * * *'
   watch:
     types: started
   repository_dispatch:
@@ -28,12 +28,10 @@ jobs:
           npm install
       - name: '运行 【更新东东小窝信息】'
         run: |
-          node jd_update_home.js
+          node jd_updateSmallHome.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
 
       - name: commit
         run: |
@@ -47,13 +45,3 @@ jobs:
         with:
           github_token: ${{ secrets.TOKEN }}
           branch: main
-
-      - name: sync github -> gitee
-        uses: Yikun/hub-mirror-action@master
-        if: env.dst_key
-        with:
-          src: ${{ secrets.SRC_USER }}
-          dst: ${{ secrets.DST_USER }}
-          static_list: "updateTeam"
-          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-          dst_token: ${{ secrets.GITEE_TOKEN }}
