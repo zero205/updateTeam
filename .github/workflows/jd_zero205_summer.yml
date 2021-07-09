@@ -6,7 +6,7 @@ name: jd_update_zero205_summer
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 16,22,0-15/3 * * *'
+    - cron: '0 23,0-4 * * *'
   watch:
     types: started
   repository_dispatch:
