@@ -6,7 +6,7 @@ name: jd_zero205_sd
 on:
   workflow_dispatch:
   schedule:
-    - cron: '8 0,6,10,16 * * *'
+    - cron: '8 0,4,16 * * *'
   watch:
     types: started
   repository_dispatch:
